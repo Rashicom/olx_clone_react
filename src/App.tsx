@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Footer from './Components/Common/Footer/Footer';
+import Header from './Components/Common/Header/Header';
+import Home_page from './Pages/Home_page/Home_page';
+import Login_page from './Pages/Login_page/Login_page';
+import Notfound_404 from './Pages/Notfound_404.tsx/Notfound_404';
+import Signup_page from './Pages/Signup_page/Signup_page';
+
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Routes>
+        <Route path='*' element={<Notfound_404/>}/>
+        <Route path='/' element={<Login_page/>}/>
+        <Route path='signup' element={<Signup_page/>}/>
+        <Route path='home' element={<Home_page/>}/>
+      </Routes>
+      <Footer/>
     </div>
+    </BrowserRouter>
   );
 }
 
